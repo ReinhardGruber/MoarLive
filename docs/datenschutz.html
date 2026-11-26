@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Datenschutz – MoarLive</title>
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://reinhardgruber.github.io/MoarLive/datenschutz.html">
+<meta name="theme-color" content="#0b1117">
+<link rel="icon" type="image/png" sizes="32x32" href="bilder/favicon-32.png">
+<link rel="apple-touch-icon" href="bilder/apple-touch-icon.png">
+<style>
+:root{
+  --bg:#0b1117; --bg2:#111a23; --card:#15202b; --line:#22303d;
+  --text:#e8eef3; --muted:#9fb0bf;
+  --yellow:#facc15; --orange:#ff5a1f; --green:#7cfc00; --teal:#2dd4bf;
+  --radius:16px;
+  --head:"Roboto Condensed","Arial Narrow","Segoe UI",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:17px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--teal)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:var(--head);line-height:1.15;letter-spacing:.2px}
+h2{font-size:clamp(28px,4vw,40px);margin:0 0 12px}
+h3{font-size:22px;margin:0 0 6px}
+p{margin:0 0 14px}
+.muted{color:var(--muted)}
+
+/* Kopf */
+header.top{position:sticky;top:0;z-index:10;background:rgba(11,17,23,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+header.top img{height:38px;width:auto}
+nav.links{display:flex;gap:18px;flex-wrap:wrap}
+nav.links a{color:var(--muted);text-decoration:none;font-size:15px}
+nav.links a:hover{color:var(--text)}
+@media(max-width:820px){nav.links{display:none}}
+
+.btn{display:inline-block;padding:12px 22px;border-radius:999px;font-weight:700;text-decoration:none;font-family:var(--head);font-size:18px}
+.btn.primary{background:var(--yellow);color:#111}
+.btn.ghost{border:2px solid var(--line);color:var(--text)}
+.btn:hover{filter:brightness(1.08)}
+
+/* Hero */
+.hero{padding:56px 0 40px;background:radial-gradient(1200px 500px at 70% -10%,rgba(45,212,191,.14),transparent),radial-gradient(900px 400px at 0% 0%,rgba(255,90,31,.10),transparent)}
+.hero .grid{display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(34px,5.2vw,58px);margin:0 0 16px}
+.hero h1 span{color:var(--teal)}
+.hero .lead{font-size:19px;color:#c9d5df}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.hero .shot{border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.badge{font-size:14px;padding:5px 12px;border-radius:999px;background:var(--card);border:1px solid var(--line);color:#c9d5df}
+@media(max-width:900px){.hero .grid{grid-template-columns:1fr}}
+
+.kopf{max-width:900px;margin:0 auto;padding:44px 20px 8px;text-align:center}
+.kopf .logo{width:min(520px,86%);height:auto;margin:0 auto}
+.kopf .kurz{font-size:20px;color:#c9d5df;margin:18px auto 18px;max-width:760px}
+.fakten{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.fakten span{font-size:15px;padding:6px 14px;border-radius:999px;background:var(--card);border:1px solid var(--line)}
+.foto-halle{max-width:1120px;margin:30px auto 0;padding:0 20px}
+.foto-halle figure{border-radius:var(--radius);box-shadow:0 20px 60px rgba(0,0,0,.45)}
+.foto-halle figcaption{text-align:center}
+@media(max-width:700px){.kopf{padding-top:28px}.kopf .kurz{font-size:17px}.fakten span{font-size:14px}}
+section{padding:64px 0;border-top:1px solid var(--line)}
+section.alt{background:var(--bg2)}
+.intro{max-width:760px;margin-bottom:30px}
+.hinweis{margin-top:14px;background:rgba(250,204,21,.12);border:1px solid rgba(250,204,21,.45);border-radius:12px;padding:12px 16px;color:var(--text)}
+
+/* Vorteile */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+.card .ico{font-size:28px;line-height:1;margin-bottom:10px}
+.card p{margin:0;color:#c9d5df}
+@media(max-width:900px){.cards{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.cards{grid-template-columns:1fr}}
+
+/* Bilder */
+.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.gallery.three{grid-template-columns:repeat(3,1fr)}
+figure{margin:0;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+figure img{width:100%}
+figcaption{padding:12px 16px;font-size:15px;color:#c9d5df}
+figcaption b{color:var(--text)}
+@media(max-width:800px){.gallery,.gallery.three{grid-template-columns:1fr}}
+
+.split{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center}
+@media(max-width:900px){.split{grid-template-columns:1fr}}
+ul.check{list-style:none;padding:0;margin:0 0 14px}
+ul.check li{padding-left:30px;position:relative;margin:0 0 9px}
+ul.check li::before{content:"✓";position:absolute;left:0;top:0;color:var(--green);font-weight:800}
+
+/* Eingabe */
+.inputs{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.inputs .card img{border-radius:12px;margin-bottom:14px}
+.knob{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:34px;display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+.knob .tag{display:inline-block;font-size:14px;font-weight:800;color:#111;background:var(--yellow);border-radius:999px;padding:3px 12px;margin-bottom:10px;letter-spacing:.5px}
+.knob .dev{display:grid;place-items:center;background:radial-gradient(circle at 50% 45%,#22303d,#15202b 70%);border-radius:18px;padding:22px}
+.knob .dev img{width:min(380px,90%);height:auto;filter:drop-shadow(0 26px 30px rgba(0,0,0,.65))}
+.flow{grid-column:1/-1;display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;align-items:center;gap:8px;border-top:1px solid var(--line);padding-top:26px}
+.flow .arr{color:var(--yellow);font-size:28px;font-weight:800}
+.scr{text-align:center;color:var(--muted);font-size:14px}
+.scr img{width:100%;max-width:170px;height:auto;display:block;margin:0 auto 10px;filter:drop-shadow(0 12px 18px rgba(0,0,0,.55))}
+.scr b{display:block;color:var(--text);font-size:13px;letter-spacing:1px;margin-bottom:6px}
+@media(max-width:900px){.knob{grid-template-columns:1fr;padding:22px}.flow{grid-template-columns:1fr 1fr}.flow .arr{display:none}}
+@media(max-width:900px){.inputs{grid-template-columns:1fr}}
+
+/* Installation */
+.plans{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.plan{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+.plan.hl{border-color:var(--teal)}
+.plan h3{font-size:26px}
+.plan .tag{display:inline-block;font-size:13px;font-weight:700;color:#111;background:var(--teal);border-radius:999px;padding:2px 10px;margin-bottom:10px}
+.plan .tag.y{background:var(--yellow)}
+@media(max-width:800px){.plans{grid-template-columns:1fr}}
+
+/* Schritte */
+.steps{counter-reset:s;display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+.step::before{counter-increment:s;content:counter(s);display:inline-grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--yellow);color:#111;font-weight:800;margin-bottom:10px;font-family:var(--head);font-size:20px}
+.step p{margin:0;color:#c9d5df}
+@media(max-width:900px){.steps{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.steps{grid-template-columns:1fr}}
+
+/* ESV */
+.esv{display:grid;grid-template-columns:1.2fr 1fr;gap:36px;align-items:center}
+.quote{font-family:var(--head);font-size:26px;line-height:1.3;border-left:4px solid var(--orange);padding-left:18px;margin:0 0 16px}
+@media(max-width:900px){.esv{grid-template-columns:1fr}}
+
+
+/* Preise */
+.preis-grund{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:26px}
+.preis-grund .plan .gross{font:800 44px var(--head);color:var(--text);line-height:1.1;margin:6px 0 4px}
+.preis-grund .plan .gross small{font-size:18px;color:var(--muted);font-weight:600}
+.preis-grund .plan .plus{color:var(--muted);font-size:15px;margin-bottom:12px}
+.pakete{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.paket{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;text-align:center;position:relative}
+.paket.beliebt{border-color:var(--yellow);box-shadow:0 0 0 1px var(--yellow) inset}
+.paket .badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--yellow);color:#111;font-size:12px;font-weight:800;border-radius:999px;padding:3px 12px;white-space:nowrap}
+.paket h3{font-size:22px;margin:0}
+.paket .bahnen{color:var(--muted);font-size:14px;margin-bottom:14px}
+.paket .p{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--line);padding:10px 2px}
+.paket .p span{color:var(--muted);font-size:14px}
+.paket .p b{font:800 26px var(--head)}
+.paket .p b small{font-size:14px;color:var(--muted);font-weight:600}
+.inkl{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:26px 0 10px}
+.inkl span{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-size:15px}
+.inkl b{color:var(--green)}
+.preis-fuss{color:var(--muted);font-size:14px;text-align:center;max-width:760px;margin:10px auto 0}
+@media(max-width:900px){.pakete{grid-template-columns:1fr 1fr}.preis-grund{grid-template-columns:1fr}}
+@media(max-width:480px){.pakete{grid-template-columns:1fr}}
+.einf{display:inline-flex;align-items:center;gap:8px;background:rgba(250,204,21,.12);border:1px solid var(--yellow);color:var(--yellow);border-radius:999px;padding:6px 16px;font-weight:800;font-size:15px;margin-top:6px}
+.preis-grund .plan .gross s{font-size:26px;color:var(--muted);font-weight:700;margin-right:10px;text-decoration-thickness:3px;text-decoration-color:#ff5a1f}
+.plus s{text-decoration-color:#ff5a1f;text-decoration-thickness:2px}
+.paket .einf-mini{display:block;color:var(--yellow);font-size:12px;font-weight:800;letter-spacing:.5px;margin-top:8px}
+/* Demo */
+.demo{background:linear-gradient(135deg,rgba(45,212,191,.16),rgba(250,204,21,.10));border:1px solid var(--line);border-radius:22px;padding:34px;display:grid;grid-template-columns:1.1fr 1fr;gap:30px;align-items:center}
+@media(max-width:900px){.demo{grid-template-columns:1fr}}
+
+/* FAQ */
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:700}
+details p{margin:10px 0 0;color:#c9d5df}
+
+footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+</style>
+<style>.imp ul{margin:0 0 8px}.imp{max-width:760px;margin:0 auto;padding:60px 0}.imp h1{font-size:40px}.imp h2{font-size:22px;margin:30px 0 8px}.imp p{margin:0 0 6px}.offen{background:#facc15;color:#111;border-radius:6px;padding:0 6px;font-weight:800}</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a href="index.html#" aria-label="MoarLive Startseite"><img src="bilder/moarlive-logo.png" alt="MoarLive – Stocksport live auf jeder Bahn" width="134" height="38"></a>
+    <nav class="links" aria-label="Seitennavigation">
+      <a href="index.html#vorteile">Vorteile</a>
+      <a href="index.html#anzeigen">Anzeigen</a>
+      <a href="index.html#design">Design</a>
+      <a href="index.html#eingabe">Eingabe</a>
+      <a href="index.html#turnier">Turnier</a>
+      <a href="index.html#installation">Installation</a>
+      <a href="index.html#preise">Preise</a>
+      <a href="index.html#demo">Demo</a>
+      <a href="index.html#fragen">Fragen</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap imp">
+<h1>Datenschutzerklärung</h1>
+<p class="muted">für die Website MoarLive und die Fire-TV-App MoarLive TV · Stand: November 2026</p>
+
+<h2>Verantwortlicher</h2>
+<p>Ing. Reinhard Gruber<br>Höfart 8, 3354 Wolfsbach, Österreich<br>E-Mail: <a href="mailto:office@elektrocheck.at">office@elektrocheck.at</a></p>
+
+<h2>Kurz zusammengefasst</h2>
+<ul class="check">
+<li>Keine Anmeldung in der TV-App nötig</li>
+<li>Keine Werbung, keine Analyse- oder Tracking-Dienste, keine Weitergabe an Dritte (Ausnahme: vom Verein gewählte Google Fonts, siehe unten)</li>
+<li>Es werden nur die Daten verarbeitet, die für die Anzeige der Spielstände technisch nötig sind</li>
+</ul>
+
+<h2>Fire-TV-App MoarLive TV</h2>
+<p>Die App zeigt Spielstände, Tabellen und Turniere eines Vereins auf dem Fernseher an. Dafür verbindet sie sich ausschließlich mit dem MoarLive-Server, den der Verein gewählt hat. Standard ist der gehostete Server <b>esv.azurewebsites.net</b>, ein Verein kann auch einen eigenen Server in der Halle betreiben.</p>
+<p>Dabei werden nur an diesen Server folgende Daten übertragen:</p>
+<ul>
+<li><b>Gerätekennung:</b> die WLAN- bzw. LAN-MAC-Adresse des Geräts. Ist sie nicht lesbar, wird ersatzweise die Android-ID oder Modell und Build-Nummer verwendet. Diese Kennung ist dauerhaft und dient dazu, den Fernseher einem Verein und einer Bahn zuzuordnen (Kopplung).</li>
+<li><b>Geräteschlüssel:</b> ein Schlüssel, den der Server bei der Freischaltung vergibt.</li>
+<li><b>App-Version:</b> nur bei der Version mit eingebautem Selbst-Update, damit der Server Updates anbieten kann. Die Version aus dem Amazon Appstore sendet sie nicht.</li>
+<li><b>IP-Adresse:</b> technisch bei jeder Verbindung nötig. Sie wird nicht gespeichert, sondern nur kurz im Arbeitsspeicher gehalten, um zu viele Anmeldeversuche zu begrenzen.</li>
+</ul>
+<p><b>Schriftarten:</b> Bindet ein Verein in seinem Anzeige-Design Google Fonts ein, lädt die Anzeige diese Schriften von Servern der Google Ireland Ltd. Dabei wird technisch die IP-Adresse des Geräts an Google übermittelt. Ohne eingebundene Google Fonts findet kein solcher Aufruf statt.</p>
+<p>Den Gerätenamen trägt der Verein im Server ein, die App sendet ihn nicht. Das Gerätemodell steht technisch in der Browserkennung der Anzeige und wird nicht gespeichert. Eine Weitergabe an Dritte findet sonst nicht statt.</p>
+<p><b>Berechtigungen der App:</b> Internet und Netzwerkstatus (Anzeige vom Server laden, bei Netzausfall neu laden), Start nach dem Einschalten und Anzeige im Vordergrund (damit der Fernseher nach dem Einschalten sofort die Anzeige zeigt) sowie ein kurzer Vordergrunddienst für diesen Autostart. Die App liest keine Kontakte, keinen Standort, keine Kamera und kein Mikrofon aus und verwendet keine Werbe-ID. Lokal speichert sie nur ihre Einstellungen, zum Beispiel die Serveradresse.</p>
+
+<h2>Spielerdaten</h2>
+<p>Mannschafts- und Spielernamen, Ergebnisse und Turnierdaten werden vom jeweiligen Verein in MoarLive eingegeben und auf den Anzeigen nur dargestellt. Für diese Inhalte ist der Verein verantwortlich. Bei der gehosteten Variante verarbeiten wir diese Daten im Auftrag des Vereins (Auftragsverarbeitung nach Art. 28 DSGVO).</p>
+
+<h2>Hosting</h2>
+<p>Der gehostete MoarLive-Server läuft bei Microsoft in der Azure Cloud. Diese Website wird über GitHub Pages (GitHub, Inc.) bereitgestellt. GitHub verarbeitet beim Aufruf technische Zugriffsdaten wie die IP-Adresse, um die Seite auszuliefern und vor Missbrauch zu schützen. Die Website verwendet keine Cookies und keine Analyse-Dienste.</p>
+
+<h2>Rechtsgrundlage und Speicherdauer</h2>
+<p>Die Verarbeitung erfolgt zur Erbringung des Dienstes (Art. 6 Abs. 1 lit. b DSGVO) und aufgrund unseres berechtigten Interesses an einem sicheren, funktionierenden Betrieb (Art. 6 Abs. 1 lit. f DSGVO). Die IP-Adresse wird nicht gespeichert. Gerätekennung und Geräteschlüssel bleiben gespeichert, solange das Gerät beim Verein eingetragen ist, und werden gelöscht, wenn der Verein das Gerät entfernt.</p>
+
+<h2>Ihre Rechte</h2>
+<p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch. Schreiben Sie dazu an <a href="mailto:office@elektrocheck.at">office@elektrocheck.at</a>. Wenn Sie meinen, dass die Verarbeitung Ihrer Daten gegen das Datenschutzrecht verstößt, können Sie sich bei der Österreichischen Datenschutzbehörde beschweren (<a href="https://www.dsb.gv.at">www.dsb.gv.at</a>).</p>
+</main>
+<footer>
+  <div class="wrap">
+    <span>© 2026 MoarLive · Stocksport live auf jeder Bahn</span>
+    <span><a href="https://github.com/ReinhardGruber/MoarLive">GitHub</a> · <a href="https://github.com/ReinhardGruber/MoarLive/issues/new?title=Anfrage%20MoarLive">Kontakt</a> · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></span>
+  </div>
+</footer>
+</body>
+</html>

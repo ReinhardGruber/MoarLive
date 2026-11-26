@@ -1,0 +1,621 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MoarLive – Anzeige, Eingabe und Wertung fürs Eisstockschießen</title>
+<meta name="description" content="MoarLive ist das Wertungssystem für Eisstockschießen und Stocksport: Live-Anzeige auf jedem Fernseher, Punkteeingabe per Drehknopf, Fernbedienung oder Handy, Turniere mit Live-Tabelle und Drucken. Gehostet oder lokal. Im Einsatz beim ESV Wolfsbach.">
+<meta name="keywords" content="Eisstockschießen, Eisstock, Stocksport, Stockschießen, Stockschützen, Wertung, Wertungssystem, Anzeige, Anzeigetafel, Eingabe, Punkteeingabe, Turnier, Turnierverwaltung, Live-Tabelle, Fire TV, Verein, Moarschaft, MoarLive">
+<meta name="author" content="Reinhard Gruber">
+<meta name="robots" content="index, follow">
+<link rel="alternate" type="text/plain" title="LLM-Zusammenfassung" href="llms.txt">
+<link rel="canonical" href="https://reinhardgruber.github.io/MoarLive/">
+<meta name="theme-color" content="#0b1117">
+<link rel="icon" type="image/png" sizes="32x32" href="bilder/favicon-32.png">
+<link rel="apple-touch-icon" href="bilder/apple-touch-icon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_AT">
+<meta property="og:site_name" content="MoarLive">
+<meta property="og:title" content="MoarLive – Stocksport live auf jeder Bahn">
+<meta property="og:description" content="Anzeige, Eingabe und Wertung fürs Eisstockschießen: Bahn- und Hallenanzeigen, Drehknopf-Eingabe, Turniere mit Live-Tabelle. Im Einsatz beim ESV Wolfsbach.">
+<meta property="og:url" content="https://reinhardgruber.github.io/MoarLive/">
+<meta property="og:image" content="https://reinhardgruber.github.io/MoarLive/bilder/moarlive-vorschau.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "MoarLive",
+  "alternateName": [
+    "MoarLive TV"
+  ],
+  "applicationCategory": "SportsApplication",
+  "applicationSubCategory": "Wertungssystem und Anzeigetafel für Eisstockschießen",
+  "operatingSystem": "Fire OS (Fire TV), Webbrowser, Docker (Windows, Linux)",
+  "inLanguage": "de",
+  "description": "Wertungssystem für Eisstockschießen und Stocksport mit Live-Anzeige auf jeder Bahn (Fernseher mit Fire TV), Hallenanzeige, Punkteeingabe per Drehknopf, Fire-TV-Fernbedienung oder Handy sowie Turnierverwaltung mit Live-Tabelle und Drucken. Gehostet in der Microsoft Azure Cloud oder lokal auf einem Rechner in der Halle, auch ohne Internet.",
+  "featureList": [
+    "Live-Anzeige je Bahn und Hallenanzeige auf Fernsehern mit Fire TV",
+    "Punkteeingabe per Drehknopf (Twist & Push), Fire-TV-Fernbedienung, Handy, Tablet oder PC",
+    "Spielarten Training, Spiel und Cup",
+    "Turnierverwaltung mit Spielplan, Live-Tabelle und Drucken",
+    "Mehrere Vereine auf einem Server",
+    "Gehostet (Microsoft Azure) oder lokal ohne Internet"
+  ],
+  "url": "https://reinhardgruber.github.io/MoarLive/",
+  "image": "https://reinhardgruber.github.io/MoarLive/bilder/moarlive-vorschau.jpg",
+  "screenshot": "https://reinhardgruber.github.io/MoarLive/bilder/bahn-cup.jpg",
+  "author": {
+    "@type": "Person",
+    "name": "Reinhard Gruber",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Wolfsbach",
+      "postalCode": "3354",
+      "addressCountry": "AT"
+    }
+  },
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Gehostet, je Bahn (Einführungspreis)",
+      "price": "3.00",
+      "priceCurrency": "EUR",
+      "priceValidUntil": "2027-03-31",
+      "description": "3 € je Bahn und Monat plus 10 € Server pro Monat, zzgl. USt.",
+      "url": "https://reinhardgruber.github.io/MoarLive/#preise"
+    },
+    {
+      "@type": "Offer",
+      "name": "Lokal, je Bahn (Einführungspreis)",
+      "price": "3.00",
+      "priceCurrency": "EUR",
+      "priceValidUntil": "2027-03-31",
+      "description": "3 € je Bahn und Monat, zzgl. USt., Rechner stellt der Verein",
+      "url": "https://reinhardgruber.github.io/MoarLive/#preise"
+    }
+  ],
+  "keywords": "Eisstockschießen, Stocksport, Stockschießen, Wertung, Wertungssystem, Anzeige, Anzeigetafel, Eingabe, Turnier, Turnierverwaltung"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Was brauche ich, um MoarLive zu nutzen?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Pro Anzeige einen Fernseher mit Fire TV, also einen Fire-TV-Fernseher oder einen Fire TV Stick am Fernseher. Dazu ein Handy, Tablet, die Fernbedienung oder einen MoarLive-Drehknopf zur Eingabe. Für die gehostete Variante reicht WLAN mit Internet in der Halle."}},
+    {"@type": "Question", "name": "Funktioniert MoarLive ohne Internet?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Ja. Mit dem lokalen Server auf einem Rechner im Vereinsheim läuft alles im eigenen Hallen-WLAN, auch ohne Internet."}},
+    {"@type": "Question", "name": "Brauche ich einen eigenen Server oder einen Raspberry Pi?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Beim gehosteten Server nicht. Nur bei der lokalen Installation braucht es einen einzigen Rechner für die ganze Halle, nicht einen pro Bahn. MoarLive läuft in Docker, also auf einem vorhandenen PC mit Windows oder Linux, einem Mini-PC oder einem Raspberry Pi."}},
+    {"@type": "Question", "name": "Können mehrere Vereine MoarLive gemeinsam nutzen?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Ja. Ein Server verwaltet beliebig viele Vereine. Jeder Verein sieht nur seine eigenen Bahnen, Spiele, Turniere und Geräte."}}
+  ]
+}
+</script>
+
+<style>
+:root{
+  --bg:#0b1117; --bg2:#111a23; --card:#15202b; --line:#22303d;
+  --text:#e8eef3; --muted:#9fb0bf;
+  --yellow:#facc15; --orange:#ff5a1f; --green:#7cfc00; --teal:#2dd4bf;
+  --radius:16px;
+  --head:"Roboto Condensed","Arial Narrow","Segoe UI",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:17px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--teal)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:var(--head);line-height:1.15;letter-spacing:.2px}
+h2{font-size:clamp(28px,4vw,40px);margin:0 0 12px}
+h3{font-size:22px;margin:0 0 6px}
+p{margin:0 0 14px}
+.muted{color:var(--muted)}
+
+/* Kopf */
+header.top{position:sticky;top:0;z-index:10;background:rgba(11,17,23,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+header.top img{height:38px;width:auto}
+nav.links{display:flex;gap:18px;flex-wrap:wrap}
+nav.links a{color:var(--muted);text-decoration:none;font-size:15px}
+nav.links a:hover{color:var(--text)}
+@media(max-width:820px){nav.links{display:none}}
+
+.btn{display:inline-block;padding:12px 22px;border-radius:999px;font-weight:700;text-decoration:none;font-family:var(--head);font-size:18px}
+.btn.primary{background:var(--yellow);color:#111}
+.btn.ghost{border:2px solid var(--line);color:var(--text)}
+.btn:hover{filter:brightness(1.08)}
+
+/* Hero */
+.hero{padding:56px 0 40px;background:radial-gradient(1200px 500px at 70% -10%,rgba(45,212,191,.14),transparent),radial-gradient(900px 400px at 0% 0%,rgba(255,90,31,.10),transparent)}
+.hero .grid{display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(34px,5.2vw,58px);margin:0 0 16px}
+.hero h1 span{color:var(--teal)}
+.hero .lead{font-size:19px;color:#c9d5df}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.hero .shot{border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.badge{font-size:14px;padding:5px 12px;border-radius:999px;background:var(--card);border:1px solid var(--line);color:#c9d5df}
+@media(max-width:900px){.hero .grid{grid-template-columns:1fr}}
+
+.kopf{max-width:900px;margin:0 auto;padding:44px 20px 8px;text-align:center}
+.kopf .logo{width:min(520px,86%);height:auto;margin:0 auto}
+.kopf .kurz{font-size:20px;color:#c9d5df;margin:18px auto 18px;max-width:760px}
+.fakten{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.fakten span{font-size:15px;padding:6px 14px;border-radius:999px;background:var(--card);border:1px solid var(--line)}
+.foto-halle{max-width:1120px;margin:30px auto 0;padding:0 20px}
+.foto-halle figure{border-radius:var(--radius);box-shadow:0 20px 60px rgba(0,0,0,.45)}
+.foto-halle figcaption{text-align:center}
+@media(max-width:700px){.kopf{padding-top:28px}.kopf .kurz{font-size:17px}.fakten span{font-size:14px}}
+section{padding:64px 0;border-top:1px solid var(--line)}
+section.alt{background:var(--bg2)}
+.intro{max-width:760px;margin-bottom:30px}
+.hinweis{margin-top:14px;background:rgba(250,204,21,.12);border:1px solid rgba(250,204,21,.45);border-radius:12px;padding:12px 16px;color:var(--text)}
+
+/* Vorteile */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+.card .ico{font-size:28px;line-height:1;margin-bottom:10px}
+.card p{margin:0;color:#c9d5df}
+@media(max-width:900px){.cards{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.cards{grid-template-columns:1fr}}
+
+/* Bilder */
+.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.gallery.three{grid-template-columns:repeat(3,1fr)}
+figure{margin:0;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+figure img{width:100%}
+figcaption{padding:12px 16px;font-size:15px;color:#c9d5df}
+figcaption b{color:var(--text)}
+@media(max-width:800px){.gallery,.gallery.three{grid-template-columns:1fr}}
+
+.split{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center}
+@media(max-width:900px){.split{grid-template-columns:1fr}}
+ul.check{list-style:none;padding:0;margin:0 0 14px}
+ul.check li{padding-left:30px;position:relative;margin:0 0 9px}
+ul.check li::before{content:"✓";position:absolute;left:0;top:0;color:var(--green);font-weight:800}
+
+/* Eingabe */
+.inputs{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.inputs .card img{border-radius:12px;margin-bottom:14px}
+.knob{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:34px;display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+.knob .tag{display:inline-block;font-size:14px;font-weight:800;color:#111;background:var(--yellow);border-radius:999px;padding:3px 12px;margin-bottom:10px;letter-spacing:.5px}
+.knob .dev{display:grid;place-items:center;background:radial-gradient(circle at 50% 45%,#22303d,#15202b 70%);border-radius:18px;padding:22px}
+.knob .dev img{width:min(380px,90%);height:auto;filter:drop-shadow(0 26px 30px rgba(0,0,0,.65))}
+.flow{grid-column:1/-1;display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;align-items:center;gap:8px;border-top:1px solid var(--line);padding-top:26px}
+.flow .arr{color:var(--yellow);font-size:28px;font-weight:800}
+.scr{text-align:center;color:var(--muted);font-size:14px}
+.scr img{width:100%;max-width:170px;height:auto;display:block;margin:0 auto 10px;filter:drop-shadow(0 12px 18px rgba(0,0,0,.55))}
+.scr b{display:block;color:var(--text);font-size:13px;letter-spacing:1px;margin-bottom:6px}
+@media(max-width:900px){.knob{grid-template-columns:1fr;padding:22px}.flow{grid-template-columns:1fr 1fr}.flow .arr{display:none}}
+@media(max-width:900px){.inputs{grid-template-columns:1fr}}
+
+/* Installation */
+.plans{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.plan{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+.plan.hl{border-color:var(--teal)}
+.plan h3{font-size:26px}
+.plan .tag{display:inline-block;font-size:13px;font-weight:700;color:#111;background:var(--teal);border-radius:999px;padding:2px 10px;margin-bottom:10px}
+.plan .tag.y{background:var(--yellow)}
+@media(max-width:800px){.plans{grid-template-columns:1fr}}
+
+/* Schritte */
+.steps{counter-reset:s;display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+.step::before{counter-increment:s;content:counter(s);display:inline-grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--yellow);color:#111;font-weight:800;margin-bottom:10px;font-family:var(--head);font-size:20px}
+.step p{margin:0;color:#c9d5df}
+@media(max-width:900px){.steps{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.steps{grid-template-columns:1fr}}
+
+/* ESV */
+.esv{display:grid;grid-template-columns:1.2fr 1fr;gap:36px;align-items:center}
+.quote{font-family:var(--head);font-size:26px;line-height:1.3;border-left:4px solid var(--orange);padding-left:18px;margin:0 0 16px}
+@media(max-width:900px){.esv{grid-template-columns:1fr}}
+
+
+/* Preise */
+.preis-grund{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:26px}
+.preis-grund .plan .gross{font:800 44px var(--head);color:var(--text);line-height:1.1;margin:6px 0 4px}
+.preis-grund .plan .gross small{font-size:18px;color:var(--muted);font-weight:600}
+.preis-grund .plan .plus{color:var(--muted);font-size:15px;margin-bottom:12px}
+.pakete{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.paket{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;text-align:center;position:relative}
+.paket.beliebt{border-color:var(--yellow);box-shadow:0 0 0 1px var(--yellow) inset}
+.paket .badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--yellow);color:#111;font-size:12px;font-weight:800;border-radius:999px;padding:3px 12px;white-space:nowrap}
+.paket h3{font-size:22px;margin:0}
+.paket .bahnen{color:var(--muted);font-size:14px;margin-bottom:14px}
+.paket .p{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--line);padding:10px 2px}
+.paket .p span{color:var(--muted);font-size:14px}
+.paket .p b{font:800 26px var(--head)}
+.paket .p b small{font-size:14px;color:var(--muted);font-weight:600}
+.inkl{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:26px 0 10px}
+.inkl span{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-size:15px}
+.inkl b{color:var(--green)}
+.preis-fuss{color:var(--muted);font-size:14px;text-align:center;max-width:760px;margin:10px auto 0}
+@media(max-width:900px){.pakete{grid-template-columns:1fr 1fr}.preis-grund{grid-template-columns:1fr}}
+@media(max-width:480px){.pakete{grid-template-columns:1fr}}
+.einf{display:inline-flex;align-items:center;gap:8px;background:rgba(250,204,21,.12);border:1px solid var(--yellow);color:var(--yellow);border-radius:999px;padding:6px 16px;font-weight:800;font-size:15px;margin-top:6px}
+.preis-grund .plan .gross s{font-size:26px;color:var(--muted);font-weight:700;margin-right:10px;text-decoration-thickness:3px;text-decoration-color:#ff5a1f}
+.plus s{text-decoration-color:#ff5a1f;text-decoration-thickness:2px}
+.paket .einf-mini{display:block;color:var(--yellow);font-size:12px;font-weight:800;letter-spacing:.5px;margin-top:8px}
+.skizzen{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:26px}
+.skizzen figure{padding:16px 16px 0}
+.skizzen figcaption{font-weight:800;font-size:18px;padding:4px 4px 16px}
+.skizzen figcaption span{display:block;font-weight:400;font-size:14px;color:var(--muted)}
+.skizzen img{width:100%;height:auto;display:block}
+@media(max-width:900px){.skizzen{grid-template-columns:1fr}}
+/* Demo */
+.demo{background:linear-gradient(135deg,rgba(45,212,191,.16),rgba(250,204,21,.10));border:1px solid var(--line);border-radius:22px;padding:34px;display:grid;grid-template-columns:1.1fr 1fr;gap:30px;align-items:center}
+@media(max-width:900px){.demo{grid-template-columns:1fr}}
+
+/* FAQ */
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:700}
+details p{margin:10px 0 0;color:#c9d5df}
+
+footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a href="#" aria-label="MoarLive Startseite"><img src="bilder/moarlive-logo.png" alt="MoarLive – Stocksport live auf jeder Bahn" width="134" height="38"></a>
+    <nav class="links" aria-label="Seitennavigation">
+      <a href="#vorteile">Vorteile</a>
+      <a href="#anzeigen">Anzeigen</a>
+      <a href="#design">Design</a>
+      <a href="#eingabe">Eingabe</a>
+      <a href="#turnier">Turnier</a>
+      <a href="#installation">Installation</a>
+      <a href="#preise">Preise</a>
+      <a href="#demo">Demo</a>
+      <a href="#fragen">Fragen</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="kopf">
+  <img class="logo" src="bilder/moarlive-logo.svg" alt="MoarLive – Stocksport live auf jeder Bahn" width="560" height="158">
+  <p class="kurz">Das Wertungssystem fürs Eisstockschießen: Punkte per Drehknopf, Fernbedienung oder Handy eingeben und sofort live auf jedem Fernseher in der Halle sehen. Mit Turnieren, Live-Tabelle und Drucken.</p>
+  <div class="fakten">
+    <span>📺 Anzeige auf jedem Fernseher</span>
+    <span>🎛️ Drehknopf ohne Kabel</span>
+    <span>🏆 Turniere mit Live-Tabelle</span>
+    <span>☁️ Online oder 🏠 lokal</span>
+  </div>
+</div>
+<div class="foto-halle">
+  <figure><img src="bilder/halle-esv-wolfsbach.jpg" alt="Eisstockhalle des ESV Wolfsbach mit MoarLive-Anzeigen über jeder Bahn" width="1280" height="720"><figcaption>MoarLive im Einsatz: Live-Anzeigen über jeder Bahn beim ESV Wolfsbach</figcaption></figure>
+</div>
+<section class="hero" style="border-top:0">
+  <div class="wrap grid">
+    <div>
+      <h1>Eisstockschießen <span>live</span> auf jeder Bahn</h1>
+      <p class="lead">MoarLive ist das Wertungssystem für den Stocksport: Jede Kehre wird mit einem Dreh oder Tastendruck eingegeben und erscheint sofort groß auf dem Fernseher an der Bahn, in der ganzen Halle und am Handy. Training, Spiel, Cup und ganze Turniere, alles in einem Programm.</p>
+      <div class="cta">
+        <a class="btn primary" href="#demo">Demo anfragen</a>
+        <a class="btn ghost" href="#installation">So kommt MoarLive in den Verein</a>
+      </div>
+      <div class="badges">
+        <span class="badge">Im Einsatz beim ESV Wolfsbach</span>
+        <span class="badge">Mehrere Vereine</span>
+        <span class="badge">Fire TV, Handy</span>
+        <span class="badge">Online oder ohne Internet</span>
+      </div>
+    </div>
+    <div class="shot"><img src="bilder/bahn-cup.jpg" alt="MoarLive Bahnanzeige beim Eisstockschießen: Cup Ennsdorf gegen St. Valentin, BestOf 5, Stand 2:0" width="1280" height="720"></div>
+  </div>
+</section>
+
+<section id="was-ist">
+  <div class="wrap split">
+    <div>
+      <h2>Was ist MoarLive?</h2>
+      <p>Beim Eisstockschießen wird nach jeder Kehre gezählt. Mit MoarLive muss niemand mehr auf Zettel schreiben oder Tafeln umstecken: Der Spielstand wird eingegeben und alle sehen ihn sofort, die Schützen an der Bahn, die Zuschauer in der Halle und die Daheimgebliebenen am Handy.</p>
+      <p>Das Programm läuft auf einem Server, entweder in der Microsoft Azure Cloud oder auf einem einzigen Rechner im Vereinsheim. Die Anzeigen sind einfache Fernseher oder Bildschirme. Bedient wird alles im Browser, ohne Installation am PC.</p>
+      <ul class="check">
+        <li>Spielstand, Kehren und Ergebnis groß auf jedem Fernseher</li>
+        <li>Eingabe per Drehknopf, TV-Fernbedienung, Handy oder PC</li>
+        <li>Turniere mit Spielplan, Live-Tabelle und fertigen Drucken</li>
+        <li>Werbung und Sponsorenlogos zwischen den Spielen</li>
+      </ul>
+    </div>
+    <figure><img src="bilder/bahn-training.jpg" alt="MoarLive Bahnanzeige beim Training mit Kehrenverlauf" width="800" height="450" loading="lazy"><figcaption><b>Bahnanzeige:</b> Spielstand und alle Kehren groß auf dem Fernseher.</figcaption></figure>
+  </div>
+</section>
+
+<section id="vorteile" class="alt">
+  <div class="wrap">
+    <div class="intro">
+      <h2>Ihre Vorteile</h2>
+      <p class="muted">Gemacht von Stockschützen für Stockschützen und im Vereinsalltag erprobt.</p>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="ico">📺</div><h3>Jeder Fernseher wird zur Anzeigetafel</h3><p>Ein Fire TV Stick am Fernseher oder ein Fernseher mit Fire TV genügt. Die Anzeige startet beim Einschalten von selbst.</p></div>
+      <div class="card"><div class="ico">🎛️</div><h3>Eingabe in Sekunden</h3><p>Drehen, drücken, fertig. Fehler lassen sich mit einem Klick zurücknehmen.</p></div>
+      <div class="card"><div class="ico">🏆</div><h3>Turniere ohne Rechenbüro-Stress</h3><p>Spielplan, Bahnverteilung, Tabelle nach IER und Drucke erstellt MoarLive automatisch.</p></div>
+      <div class="card"><div class="ico">🏟️</div><h3>Mehrere Vereine, ein System</h3><p>Jeder Verein hat seinen eigenen Bereich mit eigenen Bahnen, Geräten, Benutzern und eigenem Design.</p></div>
+      <div class="card"><div class="ico">💶</div><h3>Werbung für Sponsoren</h3><p>Sponsorenlogos und Werbebilder laufen auf freien Bahnen und im Sponsorenband der Hallenanzeige.</p></div>
+      <div class="card"><div class="ico">🎨</div><h3>TV-Design individuell anpassbar</h3><p>Farben, Schriften, Logo und Hintergrund in Ihrem Vereinsstil. Updates kommen dabei automatisch.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="anzeigen">
+  <div class="wrap">
+    <div class="intro">
+      <h2>Anzeigen für Bahn, Halle und Handy</h2>
+      <p class="muted">Gut lesbar aus großer Entfernung, in den Vereinsfarben und mit eigenem Logo.</p>
+    </div>
+    <div class="gallery">
+      <figure><img src="bilder/halle-bahnen.jpg" alt="Hallenanzeige mit allen Bahnen und Sponsorenband" width="960" height="540" loading="lazy"><figcaption><b>Hallenanzeige:</b> alle Bahnen auf einem Bildschirm, freie Bahnen sind markiert, unten das Sponsorenband.</figcaption></figure>
+      <figure><img src="bilder/halle-verlauf.jpg" alt="Hallenanzeige mit laufenden und zuletzt beendeten Spielen" width="960" height="540" loading="lazy"><figcaption><b>Spiele im Überblick:</b> laufende Spiele und die letzten Ergebnisse im Wechsel.</figcaption></figure>
+      <figure><img src="bilder/bahn-werbung.jpg" alt="Freie Bahn mit Sponsorenwerbung und letztem Ergebnis" width="960" height="540" loading="lazy"><figcaption><b>Bahn frei:</b> Werbung der Sponsoren, unten das letzte Ergebnis.</figcaption></figure>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px">
+        <figure><img src="bilder/handy-bahn.jpg" alt="Bahnanzeige am Handy" width="412" height="915" loading="lazy"><figcaption><b>Am Handy</b> live mitverfolgen.</figcaption></figure>
+        <figure><img src="bilder/handy-turnier.jpg" alt="Turniertabelle am Handy" width="412" height="892" loading="lazy"><figcaption><b>Turnier</b> am Handy.</figcaption></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="design" class="alt">
+  <div class="wrap split">
+    <div>
+      <h2>TV-Design individuell anpassbar</h2>
+      <p>Die Anzeigen sehen aus wie Ihr Verein. Jeder Verein gestaltet sein eigenes TV-Design, ganz ohne Programmierkenntnisse.</p>
+      <ul class="check">
+        <li>Eigene Farben für Teams, Text und Akzente</li>
+        <li>Eigene Schriften und Schriftgrößen</li>
+        <li>Vereinslogo und eigener Hintergrund</li>
+        <li>Fertige Vorlagen zum Starten, z. B. „Klar und groß“ oder „Sportlich“</li>
+        <li>Live-Vorschau: Sie sehen jede Änderung sofort, die Fernseher übernehmen sie nach dem Speichern</li>
+        <li>Design als Datei exportieren und in einen anderen Verein übernehmen</li>
+      </ul>
+    </div>
+    <figure><img src="bilder/verwaltung-design.jpg" alt="TV-Design-Editor von MoarLive mit Farben, Vorlagen und Live-Vorschau" width="800" height="700" loading="lazy"><figcaption><b>TV-Design-Editor</b> mit Vorlagen und Live-Vorschau.</figcaption></figure>
+  </div>
+</section>
+
+<section id="eingabe">
+  <div class="wrap">
+    <div class="intro">
+      <h2>Eingabe: so wie es am besten passt</h2>
+      <p class="muted">Alle Eingaben landen sofort auf allen Anzeigen. Wer was eingeben darf, legt der Verein fest.</p>
+    </div>
+    <div class="knob">
+      <div class="knob-text">
+        <span class="tag y">Twist &amp; Push</span>
+        <h3 style="font-size:30px">Der MoarLive-Drehknopf</h3>
+        <p><b>Drehen</b> wählt Team und Punkte, <b>Drücken</b> sendet. So einfach, dass es jeder an der Bahn sofort kann.</p>
+        <ul class="check">
+          <li><b>Keine Leitung zur Anzeige nötig:</b> Der Knopf funkt über WLAN.</li>
+          <li><b>Läuft mit Akku oder USB-C-Netzteil</b></li>
+          <li>Bahn wählen, Spiel starten (Training, Spiel, Cup), Kehren eintragen</li>
+          <li>Großer, gut lesbarer Farbbildschirm</li>
+          <li>Updates kommen automatisch über WLAN</li>
+        </ul>
+      </div>
+      <div class="dev"><img src="bilder/drehknopf-spielstand.webp" alt="MoarLive Drehknopf zeigt Spielstand 2:2 auf Bahn 1" width="800" height="800" loading="lazy"></div>
+      <div class="flow"><div class="scr"><b>SCHRITT 1</b><img src="bilder/drehknopf-cup.webp" alt="MoarLive Drehknopf: Spiel erstellen, Cup wählen" width="800" height="800" loading="lazy"><span>Spielart wählen</span></div><div class="arr">›</div><div class="scr"><b>SCHRITT 2</b><img src="bilder/drehknopf-training.webp" alt="MoarLive Drehknopf: Training mit 3 Blöcken und 6 Kehren starten" width="800" height="800" loading="lazy"><span>Training starten</span></div><div class="arr">›</div><div class="scr"><b>SCHRITT 3</b><img src="bilder/drehknopf-start.webp" alt="MoarLive Drehknopf: Spielbeginn, Kehre 1 von 18" width="800" height="800" loading="lazy"><span>Punkte eintragen</span></div><div class="arr">›</div><div class="scr"><b>SCHRITT 4</b><img src="bilder/drehknopf-aktion.webp" alt="MoarLive Drehknopf: Letzte Kehre löschen oder Spiel abbrechen" width="800" height="800" loading="lazy"><span>Bei Bedarf korrigieren</span></div></div>
+    </div>
+    <h3 style="margin:40px 0 16px">Oder ganz ohne Zusatzgerät</h3>
+    <div class="inputs">
+      <div class="card">
+        <img src="bilder/tv-punkteeingabe.jpg" alt="Punkteeingabe am Fernseher mit der Fernbedienung" width="800" height="450" loading="lazy">
+        <h3>Fernbedienung am Fernseher</h3>
+        <p>Mit der Fire-TV-Fernbedienung Punkte eintragen, Spiel starten, Teamnamen ändern. Ganz ohne zusätzliches Gerät.</p>
+      </div>
+      <div class="card">
+        <img src="bilder/web-punkteeingabe.jpg" alt="Punkteeingabe im Browser am Handy oder PC" width="800" height="595" loading="lazy">
+        <h3>Handy, Tablet oder PC</h3>
+        <p>Im Browser anmelden und Punkte antippen. Ideal für den Schreiber oder das Rechenbüro.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="turnier" class="alt">
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <h2>Turniermodus</h2>
+        <p>Vom Spielplan bis zur Siegerliste: MoarLive nimmt dem Turnierleiter die Rechenarbeit ab.</p>
+        <ul class="check">
+          <li>Mannschaften eintragen, Spielplan „Jeder gegen Jeden“ wird automatisch erstellt</li>
+          <li>Gleichmäßige Verteilung auf die Bahnen, ausgeglichenes Anspiel</li>
+          <li>Live-Tabelle in der Halle: wer spielt jetzt, wer als Nächstes, wer hat Pause</li>
+          <li>Wertung nach IER: Punkte, Stockpunkte-Differenz, direkter Vergleich</li>
+          <li>Drucke auf Knopfdruck: Ergebnisliste, Wertungs- und Laufkarten, Mannschaftsblatt, Zahlungsbestätigung</li>
+          <li>Folgeturnier mit Aufsteigern und Turnier kopieren</li>
+        </ul>
+        <p>Für einzelne Begegnungen gibt es außerdem die Spielarten <b>Training</b>, <b>Spiel</b> und <b>Cup</b> (mehrere Spiele mit Spielpunkten und Stockpunkten).</p>
+      </div>
+      <figure><img src="bilder/hallenturnier.jpg" alt="Turnieranzeige in der Halle mit Live-Tabelle und laufenden Spielen" width="1280" height="720" loading="lazy"><figcaption><b>Hallenturnier:</b> Tabelle links, laufende und nächste Spiele rechts.</figcaption></figure>
+    </div>
+    <div class="gallery three" style="margin-top:26px">
+      <figure><img src="bilder/verwaltung-turnier.jpg" alt="Turnierverwaltung mit Tabelle" width="800" height="500" loading="lazy"><figcaption><b>Turnierverwaltung</b> im Browser.</figcaption></figure>
+      <figure><img src="bilder/druck-ergebnis.jpg" alt="Gedruckte Ergebnisliste eines Stockturniers" width="600" height="848" loading="lazy"><figcaption><b>Ergebnisliste</b> mit Unterschriftenfeldern.</figcaption></figure>
+      <figure><img src="bilder/druck-laufkarten.jpg" alt="Gedruckte Laufkarten für ein Stockturnier" width="600" height="848" loading="lazy"><figcaption><b>Laufkarten</b> für die Mannschaften.</figcaption></figure>
+    </div>
+    <figure style="margin:22px auto 0;max-width:860px"><img src="bilder/verwaltung-bahnuebersicht.jpg" alt="MoarLive Verwaltung: Bahnübersicht mit Live-Vorschau aller Bahnen und Hallenanzeigen" width="1143" height="849" loading="lazy"><figcaption><b>Verwaltung, Bahnübersicht:</b> Live-Vorschau aller Bahnen und Hallenanzeigen. Punkte eintragen oder Training, Spiel und Cup mit einem Klick starten.</figcaption></figure>
+  </div>
+</section>
+
+<section id="installation">
+  <div class="wrap">
+    <div class="intro">
+      <h2>Möglichkeiten der Installation</h2>
+      <p class="muted">Zwei Wege, gleiche Funktionen. Sie entscheiden, was zu Ihrer Halle passt.</p>
+      <p class="hinweis"><b>📺 Für jede Anzeige nötig:</b> ein Fernseher mit Fire TV oder ein Fire TV Stick am Fernseher. Mehr Technik braucht es an der Bahn nicht.</p>
+      <p class="hinweis"><b>Kein Server pro Bahn!</b> Beim gehosteten Server brauchen Sie gar keinen eigenen Rechner. Nur bei der lokalen Installation steht <b>ein einziger</b> Rechner im Vereinsheim, für alle Bahnen zusammen: ein vorhandener PC mit Windows oder Linux, ein Mini-PC oder ein Raspberry Pi.</p>
+    </div>
+    <div class="plans">
+      <div class="plan hl">
+        <span class="tag">Am einfachsten</span>
+        <h3>Gehosteter Server</h3>
+        <p>MoarLive läuft bei uns in der Microsoft Azure Cloud. Ihr Verein bekommt einen eigenen Bereich, Sie melden sich an und legen los.</p>
+        <ul class="check">
+          <li><b>Kein eigener Rechner oder Server nötig</b></li>
+          <li>Nichts zu installieren und zu warten</li>
+          <li>Updates und Sicherung übernehmen wir</li>
+          <li>Ergebnisse auch von daheim abrufbar</li>
+          <li>Voraussetzung: WLAN mit Internet in der Halle</li>
+        </ul>
+      </div>
+      <div class="plan">
+        <span class="tag y">Unabhängig</span>
+        <h3>Lokaler Server</h3>
+        <p>MoarLive läuft auf einem einzigen Rechner im Vereinsheim: vorhandener PC (Windows oder Linux), Mini-PC oder Raspberry Pi. Fernseher und Drehknöpfe verbinden sich über das Hallen-WLAN.</p>
+        <ul class="check">
+          <li><b>Nur ein einziger Rechner für die ganze Halle</b></li>
+          <li>Funktioniert auch ganz ohne Internet</li>
+          <li>Alle Daten bleiben im Verein</li>
+          <li>Aktualisiert sich nachts automatisch, sobald Internet da ist</li>
+          <li>Wir helfen bei der Einrichtung</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 style="margin:40px 0 16px">In vier Schritten zur Anzeige</h3>
+    <div class="steps">
+      <div class="step"><h3>Verein anlegen</h3><p>Name, Bahnen, Logo und Farben eintragen.</p></div>
+      <div class="step"><h3>Fernseher anschließen</h3><p>App MoarLive TV am Fire TV starten.</p></div>
+      <div class="step"><h3>Gerät freischalten</h3><p>Der Fernseher zeigt einen Code, der Vereinsverwalter weist ihn einer Bahn zu.</p></div>
+      <div class="step"><h3>Spielen</h3><p>Spiel starten, Kehren eingeben, alle schauen zu.</p></div>
+    </div>
+    <h3 style="margin:40px 0 0">So hängt alles zusammen</h3>
+    <div class="skizzen">
+      <figure><figcaption>☁️ Gehostet<span>Der Server läuft bei Microsoft in der Azure Cloud. In der Halle braucht es nur WLAN mit Internet.</span></figcaption><img src="bilder/skizze-gehostet.svg" alt="Skizze gehostet: MoarLive-Server im Internet, in der Halle WLAN, Fernseher mit Fire TV je Bahn und Halle, Drehknopf und Handy" width="900" height="660" loading="lazy"></figure>
+      <figure><figcaption>🏠 Lokal<span>Ein einziger Rechner in der Halle ist der Server. Läuft auch ohne Internet.</span></figcaption><img src="bilder/skizze-lokal.svg" alt="Skizze lokal: ein Rechner mit MoarLive in der Halle, WLAN, Fernseher mit Fire TV je Bahn und Halle, Drehknopf und Handy" width="900" height="660" loading="lazy"></figure>
+    </div>
+  </div>
+</section>
+
+<section id="preise">
+  <div class="wrap">
+    <div class="intro">
+      <h2>Preise: fair und durchschaubar</h2>
+      <p class="muted">Sie zahlen nur für die Bahnen, die Sie wirklich haben. Alle Funktionen sind immer dabei.</p>
+      <span class="einf">★ Einführungspreis bis 31.03.2027</span>
+    </div>
+    <div class="preis-grund">
+      <div class="plan hl">
+        <span class="tag">Gehostet</span>
+        <h3>Wir betreiben den Server</h3>
+        <div class="gross"><s>5 €</s>3 €<small> pro Bahn und Monat</small></div>
+        <div class="plus">+ <s>15 €</s> 10 € pro Monat für den Server</div>
+        <p>Der Server läuft bei Microsoft in der Azure Cloud. Keine Technik im Verein nötig, Anzeigen einfach per WLAN verbinden.</p>
+      </div>
+      <div class="plan">
+        <span class="tag y">Lokal</span>
+        <h3>Der Server steht in Ihrer Halle</h3>
+        <div class="gross"><s>5 €</s>3 €<small> pro Bahn und Monat</small></div>
+        <div class="plus">kein Serverpreis, den Rechner stellt der Verein</div>
+        <p>Läuft auch ohne Internet. Einrichtung aus der Ferne auf Wunsch einmalig 49 €.</p>
+      </div>
+    </div>
+    <h3 style="text-align:center;margin:34px 0 22px">Pakete für jede Halle <span style="color:var(--yellow);font-size:16px">(Einführungspreise bis 31.03.2027)</span></h3>
+    <div class="pakete">
+      <div class="paket">
+        <h3>Start</h3><div class="bahnen">bis 2 Bahnen</div>
+        <div class="p"><span>Gehostet</span><b>15 €<small>/Monat</small></b></div>
+        <div class="p"><span>Lokal</span><b>5 €<small>/Monat</small></b></div>
+      </div>
+      <div class="paket beliebt"><span class="badge">Am beliebtesten</span>
+        <h3>Verein</h3><div class="bahnen">bis 4 Bahnen</div>
+        <div class="p"><span>Gehostet</span><b>20 €<small>/Monat</small></b></div>
+        <div class="p"><span>Lokal</span><b>10 €<small>/Monat</small></b></div>
+      </div>
+      <div class="paket">
+        <h3>Halle</h3><div class="bahnen">bis 6 Bahnen</div>
+        <div class="p"><span>Gehostet</span><b>25 €<small>/Monat</small></b></div>
+        <div class="p"><span>Lokal</span><b>15 €<small>/Monat</small></b></div>
+      </div>
+      <div class="paket">
+        <h3>Groß</h3><div class="bahnen">bis 10 Bahnen</div>
+        <div class="p"><span>Gehostet</span><b>35 €<small>/Monat</small></b></div>
+        <div class="p"><span>Lokal</span><b>25 €<small>/Monat</small></b></div>
+      </div>
+    </div>
+    <p class="hinweis" style="max-width:760px;margin:26px auto 0;text-align:center"><b>📺 Pro Anzeige brauchen Sie:</b> einen Fernseher mit Fire TV oder einen Fire TV Stick am Fernseher (ab ca. 40 €, nicht im Preis enthalten).</p>
+    <div class="inkl"><span><b>✓</b> Alle Funktionen inklusive Turniermodus</span><span><b>✓</b> Updates inklusive</span><span><b>✓</b> Support inklusive</span><span><b>✓</b> Jährlich: 10 Monate zahlen, 12 nutzen</span><span><b>✓</b> 30 Tage gratis testen</span></div>
+    <p class="preis-fuss">Mehr als 10 Bahnen? Gerne auf Anfrage. Fernseher, Fire TV und Drehknopf sind nicht im Preis enthalten. Alle Preise in Euro, zzgl. USt.</p>
+    <div style="text-align:center;margin-top:20px"><a class="btn primary" href="https://github.com/ReinhardGruber/MoarLive/issues/new?template=demo-anfrage.yml" rel="nofollow">30 Tage gratis testen</a></div>
+  </div>
+</section>
+
+<section id="rollen" class="alt">
+  <div class="wrap" style="max-width:860px">
+    <div>
+      <h2>Für jeden die richtige Rolle</h2>
+      <ul class="check">
+        <li><b>Schreiber</b> tragen Punkte ein und starten Spiele.</li>
+        <li><b>Vereinsverwalter</b> kümmern sich um Bahnen, Geräte, Turniere, Werbung und Benutzer des eigenen Vereins.</li>
+        <li><b>Hauptadmins</b> verwalten den Server mit allen Vereinen.</li>
+      </ul>
+      <p>Neue Fernseher und Drehknöpfe zeigen nur einen Freischalt-Code. Erst wenn der Verein sie freigibt, zeigen sie etwas an. So kann niemand Fremder mitspielen.</p>
+      <p>Sicherung und Wiederherstellung der Vereinsdaten sind eingebaut.</p>
+    </div>
+  </div>
+</section>
+
+<section id="esv-wolfsbach">
+  <div class="wrap esv">
+    <div>
+      <h2>Im Einsatz beim ESV Wolfsbach</h2>
+      <p class="quote">Alle Bahnen, alle Anzeigen, Training, Meisterschaft und Turniere: Beim ESV Wolfsbach läuft alles mit MoarLive.</p>
+      <p>MoarLive ist im Verein entstanden und wird dort im laufenden Spielbetrieb genutzt. Jede Verbesserung kommt aus dem echten Spielbetrieb: vom Drehknopf an der Bahn bis zur Siegerliste am Turniertag.</p>
+    </div>
+    <figure><img src="bilder/halle-bahnen.jpg" alt="Hallenanzeige des ESV Wolfsbach" width="960" height="540" loading="lazy"></figure>
+  </div>
+</section>
+
+<section id="demo" class="alt">
+  <div class="wrap">
+    <div class="demo">
+      <div>
+        <h2>Demo: selbst ausprobieren</h2>
+        <p>Im Demo-Verein laufen rund um die Uhr simulierte Spiele und Turniere. Schicken Sie einfach eine kurze Anfrage: Sie bekommen dann einen Zugang zu Testzwecken freigeschaltet. Öffnen Sie Hallenanzeige oder Bahn am Fernseher oder Beamer und probieren Sie die Eingabe selbst aus.</p>
+        <div class="cta" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:18px">
+          <a class="btn primary" href="https://github.com/ReinhardGruber/MoarLive/issues/new?template=demo-anfrage.yml" rel="nofollow">Demo-Zugang anfragen</a>
+          <a class="btn ghost" href="https://github.com/ReinhardGruber/MoarLive/issues/new?title=Anfrage%20MoarLive">Vorführung anfragen</a>
+        </div>
+      </div>
+      <figure><img src="bilder/demo-uebersicht.jpg" alt="Übersicht des MoarLive Demo-Vereins mit Links zu Hallenanzeige, Bahnen und Hallenturnier" width="1280" height="800" loading="lazy"></figure>
+    </div>
+  </div>
+</section>
+
+<section id="fragen">
+  <div class="wrap" style="max-width:860px">
+    <h2>Häufige Fragen</h2>
+    <details><summary>Was brauche ich, um MoarLive zu nutzen?</summary><p>Pro Anzeige einen Fernseher mit Fire TV, also einen Fire-TV-Fernseher oder einen Fire TV Stick am Fernseher. Dazu ein Handy, Tablet, die Fernbedienung oder einen MoarLive-Drehknopf zur Eingabe. Für die gehostete Variante reicht WLAN mit Internet in der Halle.</p></details>
+    <details><summary>Funktioniert MoarLive ohne Internet?</summary><p>Ja. Mit dem lokalen Server auf einem Rechner im Vereinsheim läuft alles im eigenen Hallen-WLAN, auch ohne Internet.</p></details>
+    <details><summary>Brauche ich einen eigenen Server oder einen Raspberry Pi?</summary><p>Beim gehosteten Server nicht. Nur bei der lokalen Installation braucht es einen einzigen Rechner für die ganze Halle, nicht einen pro Bahn. MoarLive läuft in Docker, also auf einem vorhandenen PC mit Windows oder Linux, einem Mini-PC oder einem Raspberry Pi.</p></details>
+    <details><summary>Welche Fire-TV-Geräte gehen?</summary><p>Die App MoarLive TV läuft auf Fire-TV-Geräten mit Fire OS: Fire TV Stick (z. B. 4K) oder Fernseher mit eingebautem Fire TV. Pro Anzeige wird ein Gerät gebraucht.</p></details>
+    <details><summary>Können mehrere Vereine MoarLive gemeinsam nutzen?</summary><p>Ja. Ein Server verwaltet beliebig viele Vereine. Jeder Verein sieht nur seine eigenen Bahnen, Spiele, Turniere und Geräte.</p></details>
+    <details><summary>Welche Spielarten gibt es?</summary><p>Training (Punkte fortlaufend über alle Kehren), Spiel und Cup (mehrere Spiele mit Spielpunkten und Stockpunkten) sowie Turniere „Jeder gegen Jeden“ mit Wertung nach IER.</p></details>
+    <details><summary>Wie bekomme ich MoarLive für meinen Verein?</summary><p>Schreiben Sie uns über <a href="https://github.com/ReinhardGruber/MoarLive/issues/new?title=Anfrage%20MoarLive">„Anfrage stellen“</a>. Wir zeigen Ihnen MoarLive gerne und besprechen, welche Installation passt.</p></details>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 MoarLive · Stocksport live auf jeder Bahn</span>
+    <span><a href="https://github.com/ReinhardGruber/MoarLive">GitHub</a> · <a href="https://github.com/ReinhardGruber/MoarLive/issues/new?title=Anfrage%20MoarLive">Kontakt</a> · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></span>
+  </div>
+</footer>
+</body>
+</html>

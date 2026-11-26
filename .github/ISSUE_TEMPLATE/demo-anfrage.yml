@@ -1,0 +1,37 @@
+name: Demo-Zugang anfragen
+description: Testzugang zu MoarLive anfragen. Nach Prüfung wird ein Demo-Verein zu Testzwecken freigeschaltet.
+title: "Demo-Anfrage: "
+labels: ["demo-anfrage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Danke für Ihr Interesse an MoarLive! Nach Ihrer Anfrage wird ein Zugang zu Testzwecken freigeschaltet. Die Antwort kommt hier als Kommentar.
+
+        **Bitte beachten:** Diese Anfrage ist öffentlich sichtbar. Bitte keine Telefonnummern, E-Mail-Adressen oder Passwörter eintragen.
+  - type: input
+    id: verein
+    attributes:
+      label: Verein / Ort
+      placeholder: z. B. EV Musterdorf
+    validations:
+      required: true
+  - type: input
+    id: bahnen
+    attributes:
+      label: Wie viele Bahnen habt ihr?
+      placeholder: z. B. 4
+  - type: checkboxes
+    id: interesse
+    attributes:
+      label: Was möchten Sie testen?
+      options:
+        - label: Anzeigen am Fernseher (Bahn und Halle)
+        - label: Eingabe per Handy, Tablet oder PC
+        - label: Drehknopf
+        - label: Turniermodus
+  - type: textarea
+    id: notiz
+    attributes:
+      label: Anmerkungen
+      placeholder: Was ist Ihnen wichtig?

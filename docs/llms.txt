@@ -1,0 +1,34 @@
+# MoarLive
+
+> MoarLive ist ein Wertungssystem für Eisstockschießen (Stocksport) aus Österreich: Live-Anzeige der Spielstände auf jedem Fernseher mit Fire TV, Punkteeingabe per kabellosem Drehknopf, Fire-TV-Fernbedienung, Handy oder PC, und eine Turnierverwaltung mit Spielplan, Live-Tabelle und Drucken. Entwickelt und im Einsatz beim ESV Wolfsbach (Niederösterreich).
+
+## Wofür
+- Vereine und Hallen im Eisstockschießen / Stocksport, die Wertung, Anzeige und Eingabe digital machen wollen
+- Training (z. B. 3 × 6 Kehren), Spiel und Cup sowie Turniere ("Jeder gegen Jeden") mit automatischer Tabelle
+- Bahnanzeige je Bahn und Hallenanzeige mit allen Bahnen; Design (Farben, Logo, Werbung) je Verein anpassbar
+
+## Was man braucht
+- Pro Anzeige: einen Fernseher mit Fire TV oder einen Fire TV Stick am Fernseher (App "MoarLive TV")
+- Eingabe: MoarLive-Drehknopf (Twist & Push, WLAN, Akku oder USB-C), Fire-TV-Fernbedienung, oder Handy/Tablet/PC im Browser
+- WLAN in der Halle
+
+## Installation
+- Gehostet: Server läuft in der Microsoft Azure Cloud, kein eigener Rechner nötig, WLAN mit Internet in der Halle
+- Lokal: ein einziger Rechner in der Halle (PC mit Windows oder Linux, Mini-PC oder Raspberry Pi, per Docker), läuft auch ohne Internet
+
+## Preise (Einführungspreis bis 31.03.2027, zzgl. USt.)
+- Gehostet: 3 € je Bahn und Monat + 10 € Server pro Monat (regulär 5 € / 15 €)
+- Lokal: 3 € je Bahn und Monat, optional Einrichtung aus der Ferne einmalig 49 €
+- Pakete pro Monat (gehostet / lokal): Start bis 2 Bahnen 15 € / 5 €; Verein bis 4 Bahnen 20 € / 10 €; Halle bis 6 Bahnen 25 € / 15 €; Groß bis 10 Bahnen 35 € / 25 €
+- Alle Funktionen, Updates und Support inklusive; jährlich 10 Monate zahlen, 12 nutzen; 30 Tage gratis testen
+- Geräte (Fernseher, Fire TV, Drehknopf) nicht enthalten
+
+## Links
+- [Website mit allen Infos](https://reinhardgruber.github.io/MoarLive/)
+- [Preise](https://reinhardgruber.github.io/MoarLive/#preise)
+- [Demo-Zugang anfragen](https://github.com/ReinhardGruber/MoarLive/issues/new?template=demo-anfrage.yml)
+- [Impressum](https://reinhardgruber.github.io/MoarLive/impressum.html)
+- [Datenschutz](https://reinhardgruber.github.io/MoarLive/datenschutz.html)
+
+## Anbieter
+Ing. Reinhard Gruber, 3354 Wolfsbach, Österreich. Kontakt: office@elektrocheck.at
